@@ -6,7 +6,7 @@ Plain static HTML, no build step. `index.html` is the page, `impressum.html` and
 
 ## Before linking the page anywhere
 
-1. **Fill in the Impressum.** Replace the bracketed placeholders in `impressum.html` with an address where post reaches you (a c/o address works, a Postfach does not).
+1. **Impressum address.** `impressum.html` shows only name and city for now. A full address (a c/o address works, a Postfach does not) gets added once there is one to use, for example the hub's own rooms.
 
 ## Sign-ups
 
