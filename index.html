@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animal Welfare Hub Köln</title>
+<meta name="description" content="Coworking in Köln für Menschen, die Vollzeit für den Tierschutz arbeiten oder das fest vorhaben. Zwei feste Tage pro Woche.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #E9EDF1;
+    --paper-raised: #F4F6F8;
+    --ink: #1C2A3A;
+    --ink-soft: #4A5868;
+    --rule: #C9D1D9;
+    --mark: #E3A72F;
+    --mark-ink: #1C2A3A;
+    --teal: #3F6F6A;
+    --error: #A3361F;
+    --gutter: clamp(16px, 5vw, 56px);
+    --measure: 66ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141B24;
+      --paper-raised: #1B2430;
+      --ink: #E6ECF2;
+      --ink-soft: #A6B2BF;
+      --rule: #2E3A48;
+      --mark: #E3A72F;
+      --mark-ink: #141B24;
+      --teal: #7FB3AC;
+      --error: #F08A72;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141B24;
+    --paper-raised: #1B2430;
+    --ink: #E6ECF2;
+    --ink-soft: #A6B2BF;
+    --rule: #2E3A48;
+    --mark: #E3A72F;
+    --mark-ink: #141B24;
+    --teal: #7FB3AC;
+    --error: #F08A72;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Schibsted Grotesk", system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    font-feature-settings: "kern", "liga";
+  }
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter); }
+  .prose { max-width: var(--measure); }
+
+  /* Header */
+  .site-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-top: 28px; padding-bottom: 28px;
+    font-weight: 700;
+  }
+  .site-head nav a { font-weight: 500; color: var(--ink-soft); text-decoration: none; }
+  .site-head nav a:hover { color: var(--ink); text-decoration: underline; }
+
+  /* Hero */
+  .hero { padding-top: clamp(24px, 6vw, 72px); padding-bottom: clamp(48px, 8vw, 96px); }
+  h1 {
+    font-size: clamp(2.5rem, 7.2vw, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+    margin: 0 0 28px;
+    max-width: 14ch;
+    hyphens: manual;
+  }
+  .lede { font-size: clamp(1.125rem, 1.6vw, 1.3rem); line-height: 1.5; color: var(--ink-soft); margin: 0; max-width: 54ch; }
+
+  /* The week strip */
+  .week {
+    list-style: none; margin: clamp(40px, 6vw, 64px) 0 0; padding: 0;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    border-top: 2px solid var(--ink);
+  }
+  .week li {
+    padding: 14px 12px 18px;
+    border-right: 1px solid var(--rule);
+    min-height: clamp(96px, 14vw, 160px);
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .week li:last-child { border-right: 0; }
+  .week .day {
+    font-size: clamp(1.5rem, 4.4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1;
+    color: var(--ink-soft); opacity: 0.55;
+  }
+  .week .note { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.3; }
+  .week .hub {
+    background: linear-gradient(var(--mark), var(--mark)) no-repeat left / 100% 100%;
+    color: var(--mark-ink); border-right-color: transparent;
+  }
+  .week .hub .day { color: var(--mark-ink); opacity: 1; }
+  .week .hub .note { color: var(--mark-ink); font-weight: 500; }
+  .week-caption { margin: 12px 0 0; font-size: 0.95rem; color: var(--ink-soft); }
+
+  .hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+  .button {
+    display: inline-block; font: inherit; font-weight: 700; font-size: 1.05rem;
+    background: var(--ink); color: var(--paper);
+    border: 2px solid var(--ink); border-radius: 999px;
+    padding: 12px 26px; text-decoration: none; cursor: pointer;
+  }
+  .button:hover { background: transparent; color: var(--ink); text-decoration: none; }
+  .button[disabled] { opacity: 0.6; cursor: progress; }
+
+  /* Sections */
+  section.block { padding: clamp(48px, 7vw, 88px) 0; border-top: 1px solid var(--rule); }
+  h2 {
+    font-size: clamp(1.75rem, 3.6vw, 2.5rem); line-height: 1.1; letter-spacing: -0.015em;
+    font-weight: 800; margin: 0 0 20px; max-width: 22ch;
+  }
+  h3 { font-size: 1.125rem; font-weight: 700; margin: 0 0 4px; line-height: 1.35; }
+  p { margin: 0 0 16px; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  .fit { list-style: none; padding: 0; margin: 28px 0 0; max-width: var(--measure); }
+  .fit li { padding: 14px 0 14px 28px; border-top: 1px solid var(--rule); position: relative; }
+  .fit li:last-child { border-bottom: 1px solid var(--rule); }
+  .fit li::before {
+    content: ""; position: absolute; left: 0; top: 24px;
+    width: 12px; height: 12px; background: var(--mark); border-radius: 2px;
+  }
+
+  /* Hub day timeline: a real sequence through one day */
+  .day-line { list-style: none; padding: 0; margin: 32px 0 0; max-width: var(--measure); position: relative; }
+  .day-line::before {
+    content: ""; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px; background: var(--rule);
+  }
+  .day-line li { position: relative; padding: 0 0 28px 44px; }
+  .day-line li:last-child { padding-bottom: 0; }
+  .day-line li::before {
+    content: ""; position: absolute; left: 0; top: 6px; width: 16px; height: 16px;
+    border-radius: 50%; background: var(--paper); border: 2px solid var(--teal);
+  }
+  .day-line .when { color: var(--teal); font-weight: 700; font-size: 0.95rem; display: block; }
+  .day-line p { color: var(--ink-soft); margin: 0; }
+  .monthly {
+    margin-top: 36px; max-width: var(--measure);
+    padding: 20px 22px; background: var(--paper-raised); border-left: 4px solid var(--mark);
+  }
+  .monthly p { margin: 0; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin: 32px 0 0; max-width: 820px; }
+  .facts div { padding: 18px 20px 18px 0; border-top: 2px solid var(--ink); margin-right: 24px; }
+  .facts dt { font-weight: 700; margin-bottom: 4px; }
+  .facts dd { margin: 0; color: var(--ink-soft); }
+
+  /* Form */
+  form { max-width: 620px; margin-top: 32px; }
+  .field { margin-bottom: 24px; }
+  label, legend { display: block; font-weight: 700; margin-bottom: 6px; }
+  .hint { display: block; font-weight: 400; color: var(--ink-soft); font-size: 0.95rem; margin-top: -2px; margin-bottom: 8px; }
+  input[type="text"], input[type="email"], textarea {
+    width: 100%; font: inherit; color: var(--ink);
+    background: var(--paper-raised); border: 1.5px solid var(--rule); border-radius: 6px;
+    padding: 12px 14px;
+  }
+  input[type="text"]:focus, input[type="email"]:focus, textarea:focus { border-color: var(--ink); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--mark) 60%, transparent); }
+  textarea { min-height: 120px; resize: vertical; }
+  fieldset { border: 0; padding: 0; margin: 0 0 24px; }
+  .choices { display: flex; flex-wrap: wrap; gap: 10px; }
+  .choice { position: relative; }
+  .choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .choice span {
+    display: inline-block; padding: 9px 16px; border: 1.5px solid var(--rule); border-radius: 999px;
+    cursor: pointer; font-weight: 500; background: var(--paper-raised);
+  }
+  .choice input:checked + span { background: var(--mark); border-color: var(--mark); color: var(--mark-ink); }
+  .choice input:focus-visible + span { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .consent { display: flex; gap: 12px; align-items: flex-start; font-weight: 400; }
+  .consent input { margin-top: 5px; width: 18px; height: 18px; accent-color: var(--teal); flex-shrink: 0; }
+  .form-status { margin-top: 16px; min-height: 1.6em; font-weight: 500; }
+  .form-status.error { color: var(--error); }
+  .form-done { padding: 24px; background: var(--paper-raised); border-left: 4px solid var(--teal); max-width: 620px; margin-top: 32px; }
+  .form-done h3 { font-size: 1.25rem; }
+  .hp { position: absolute; left: -9999px; }
+
+  /* Footer */
+  .site-foot { border-top: 1px solid var(--rule); padding: 32px 0 48px; color: var(--ink-soft); font-size: 0.95rem; }
+  .site-foot .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+  .site-foot nav { display: flex; gap: 20px; }
+
+  @media (max-width: 560px) {
+    .week li { padding: 10px 6px 12px; }
+    .week .note { font-size: 0.75rem; }
+    .site-head nav { display: none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+    .week .hub { animation: mark-in 650ms cubic-bezier(.3,.7,.2,1) 200ms both; }
+    .week .hub:nth-child(4) { animation-delay: 500ms; }
+    @keyframes mark-in { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap site-head">
+  <span>Animal Welfare Hub Köln</span>
+  <nav aria-label="Seitennavigation"><a href="#eintragen">Eintragen</a></nav>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <h1>Für Tiere arbeiten, aber nicht allein.</h1>
+    <p class="lede">Der Animal Welfare Hub bringt Menschen in und um Köln zusammen, die Vollzeit für den Tierschutz arbeiten oder das fest vorhaben. An zwei festen Tagen pro Woche arbeiten wir im selben Raum, jede:r an den eigenen Projekten.</p>
+
+    <ol class="week" aria-label="Arbeitswoche, Hub-Tage markiert">
+      <li><span class="day">Mo</span><span class="note"></span></li>
+      <li class="hub"><span class="day">Di</span><span class="note">Hub</span></li>
+      <li><span class="day">Mi</span><span class="note"></span></li>
+      <li class="hub"><span class="day">Do</span><span class="note">Hub</span></li>
+      <li><span class="day">Fr</span><span class="note"></span></li>
+    </ol>
+    <p class="week-caption">Voraussichtlich dienstags und donnerstags. Die Tage legen wir gemeinsam fest.</p>
+
+    <div class="hero-actions">
+      <a class="button" href="#eintragen">Eintragen</a>
+      <a href="#fuer-wen">Für wen ist das?</a>
+    </div>
+  </div>
+
+  <section class="block" id="fuer-wen" aria-labelledby="h-wen">
+    <div class="wrap">
+      <h2 id="h-wen">Für alle, die schon ernsthaft dabei sind</h2>
+      <div class="prose">
+        <p>Wer einen Job bei einer NGO hat, hat Kolleg:innen und einen Rahmen. Wer ein eigenes Projekt aufbaut, sitzt oft allein am Schreibtisch. Der Hub ist für die zweite Gruppe.</p>
+      </div>
+      <ul class="fit">
+        <li>Du arbeitest Vollzeit für den Tierschutz oder hast es fest vor, allein oder mit zwei, drei anderen.</li>
+        <li>Gründen musst du nichts. Wer forscht oder Paper schreibt, gehört genauso dazu.</li>
+        <li>Im Kern geht es um Tierschutz. Ernährungswende, Klima und Ernährung oder alternative Proteine passen auch.</li>
+        <li>Zum Start ist der Hub für alle, die nach Köln pendeln können.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="ablauf" aria-labelledby="h-tag">
+    <div class="wrap">
+      <h2 id="h-tag">So läuft ein Hub-Tag</h2>
+      <ol class="day-line">
+        <li>
+          <span class="when">Morgens</span>
+          <h3>Kurzer Check-in</h3>
+          <p>Jede:r sagt, was heute geschafft werden soll.</p>
+        </li>
+        <li>
+          <span class="when">Mittags</span>
+          <h3>Gemeinsam essen</h3>
+          <p>Zeit, über die Arbeit der anderen zu reden.</p>
+        </li>
+        <li>
+          <span class="when">Am Ende des Tages</span>
+          <h3>Kurzer Rückblick</h3>
+          <p>Was hat geklappt, wo hängt es, was kommt als Nächstes.</p>
+        </li>
+      </ol>
+      <div class="monthly">
+        <p><strong>Einmal im Monat</strong> stellt jemand das eigene Projekt vor und bekommt Feedback von der Gruppe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="stand" aria-labelledby="h-stand">
+    <div class="wrap">
+      <h2 id="h-stand">Wo wir gerade stehen</h2>
+      <div class="prose">
+        <p>Angefangen hat es mit zwei Leuten, die einmal pro Woche zusammen arbeiten. Daraus wird jetzt ein Pilot.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Gruppe</dt><dd>Zum Start fünf bis acht Leute</dd></div>
+        <div><dt>Tage</dt><dd>Zwei feste Tage pro Woche</dd></div>
+        <div><dt>Ort</dt><dd>Klären wir gerade, am liebsten nahe der Uni Köln</dd></div>
+      </dl>
+      <div class="prose" style="margin-top:32px">
+        <p>Der Hub ist ein unabhängiges Projekt. Ins Leben gerufen hat ihn Florian Burger, der Mathematik im Master an der Uni Köln studiert und sich bei Plant-based Universities dafür einsetzt, dass das Kölner Studierendenwerk seine Mensen vollständig auf pflanzliche Verpflegung umstellt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="eintragen" aria-labelledby="h-form">
+    <div class="wrap">
+      <h2 id="h-form">Mitmachen</h2>
+      <div class="prose">
+        <p>Trag dich ein, wenn du beim Pilot dabei sein willst. Florian meldet sich dann bei dir.</p>
+      </div>
+
+      <form id="signup" novalidate>
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">E-Mail</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-work">Woran arbeitest du?</label>
+          <span class="hint" id="f-work-hint">Ein paar Sätze reichen. Auch wenn es noch ein Plan ist.</span>
+          <textarea id="f-work" name="arbeit" aria-describedby="f-work-hint" required></textarea>
+        </div>
+
+        <fieldset>
+          <legend>Wie viel Zeit steckst du rein?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="umfang" value="Vollzeit" required><span>Vollzeit</span></label>
+            <label class="choice"><input type="radio" name="umfang" value="Fest geplant"><span>Fest geplant</span></label>
+            <label class="choice"><input type="radio" name="umfang" value="Teilzeit"><span>Teilzeit</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Welche Tage passen dir?</legend>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="tage" value="Dienstag"><span>Dienstag</span></label>
+            <label class="choice"><input type="checkbox" name="tage" value="Donnerstag"><span>Donnerstag</span></label>
+            <label class="choice"><input type="checkbox" name="tage" value="Andere Tage"><span>Andere Tage</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label class="consent">
+            <input type="checkbox" name="einwilligung" value="ja" required>
+            <span>Ich bin einverstanden, dass meine Angaben gespeichert werden, damit Florian mich zum Hub kontaktieren kann. Mehr dazu im <a href="datenschutz.html">Datenschutz</a>.</span>
+          </label>
+        </div>
+
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <button class="button" type="submit">Eintragen</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="form-done" id="form-done" hidden tabindex="-1">
+        <h3>Du bist eingetragen.</h3>
+        <p>Florian meldet sich bei dir, sobald der Pilot steht.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>Animal Welfare Hub Köln</span>
+    <nav aria-label="Rechtliches"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+  </div>
+</footer>
+
+<script>
+  // Address of the form service that receives sign-ups (for example a Formspree form URL).
+  // Leave empty until the form service is set up.
+  const FORM_ENDPOINT = "";
+
+  const form = document.getElementById("signup");
+  const statusEl = document.getElementById("form-status");
+  const done = document.getElementById("form-done");
+
+  function fail(message, field) {
+    statusEl.textContent = message;
+    statusEl.classList.add("error");
+    if (field) field.focus();
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    statusEl.textContent = "";
+    statusEl.classList.remove("error");
+
+    const name = form.elements["name"];
+    const email = form.elements["email"];
+    const work = form.elements["arbeit"];
+    const consent = form.elements["einwilligung"];
+    const umfang = form.querySelector('input[name="umfang"]:checked');
+
+    if (!name.value.trim()) return fail("Bitte trag deinen Namen ein.", name);
+    if (!email.value.trim() || !email.checkValidity()) return fail("Bitte trag eine gültige E-Mail-Adresse ein.", email);
+    if (!work.value.trim()) return fail("Bitte schreib kurz, woran du arbeitest.", work);
+    if (!umfang) return fail("Bitte wähl aus, wie viel Zeit du reinsteckst.", form.querySelector('input[name="umfang"]'));
+    if (!consent.checked) return fail("Bitte bestätige die Einwilligung, damit Florian dich kontaktieren darf.", consent);
+
+    if (!FORM_ENDPOINT) {
+      return fail("Das Formular ist noch nicht verbunden. Versuch es bitte in ein paar Tagen noch einmal.");
+    }
+
+    const data = new FormData(form);
+    data.set("tage", [...form.querySelectorAll('input[name="tage"]:checked')].map(i => i.value).join(", ") || "keine Angabe");
+
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    button.textContent = "Wird eingetragen";
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { "Accept": "application/json" } });
+      if (!response.ok) throw new Error(String(response.status));
+      form.hidden = true;
+      done.hidden = false;
+      done.focus();
+    } catch (error) {
+      button.disabled = false;
+      button.textContent = "Eintragen";
+      fail("Das Eintragen hat nicht geklappt. Prüf deine Verbindung und versuch es noch einmal.");
+    }
+  });
+</script>
+</body>
+</html>
