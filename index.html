@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Animal Welfare Hub Köln</title>
-<meta name="description" content="Coworking in Cologne for people who work full-time on animal welfare or firmly plan to. Two fixed days a week.">
+<meta name="description" content="Coworking in Cologne for people who are seriously committed to food system change: making plant-based food the norm and moving away from animal products.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -82,36 +82,11 @@
     letter-spacing: -0.025em;
     font-weight: 800;
     margin: 0 0 28px;
-    max-width: 14ch;
+    max-width: 20ch;
     hyphens: manual;
   }
+  h1 .together { display: block; color: var(--teal); }
   .lede { font-size: clamp(1.125rem, 1.6vw, 1.3rem); line-height: 1.5; color: var(--ink-soft); margin: 0; max-width: 54ch; }
-
-  /* The week strip */
-  .week {
-    list-style: none; margin: clamp(40px, 6vw, 64px) 0 0; padding: 0;
-    display: grid; grid-template-columns: repeat(5, 1fr);
-    border-top: 2px solid var(--ink);
-  }
-  .week li {
-    padding: 14px 12px 18px;
-    border-right: 1px solid var(--rule);
-    min-height: clamp(96px, 14vw, 160px);
-    display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .week li:last-child { border-right: 0; }
-  .week .day {
-    font-size: clamp(1.5rem, 4.4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1;
-    color: var(--ink-soft); opacity: 0.55;
-  }
-  .week .note { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.3; }
-  .week .hub {
-    background: linear-gradient(var(--mark), var(--mark)) no-repeat left / 100% 100%;
-    color: var(--mark-ink); border-right-color: transparent;
-  }
-  .week .hub .day { color: var(--mark-ink); opacity: 1; }
-  .week .hub .note { color: var(--mark-ink); font-weight: 500; }
-  .week-caption { margin: 12px 0 0; font-size: 0.95rem; color: var(--ink-soft); }
 
   .hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
   .button {
@@ -140,25 +115,6 @@
     content: ""; position: absolute; left: 0; top: 24px;
     width: 12px; height: 12px; background: var(--mark); border-radius: 2px;
   }
-
-  /* Hub day timeline: a real sequence through one day */
-  .day-line { list-style: none; padding: 0; margin: 32px 0 0; max-width: var(--measure); position: relative; }
-  .day-line::before {
-    content: ""; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px; background: var(--rule);
-  }
-  .day-line li { position: relative; padding: 0 0 28px 44px; }
-  .day-line li:last-child { padding-bottom: 0; }
-  .day-line li::before {
-    content: ""; position: absolute; left: 0; top: 6px; width: 16px; height: 16px;
-    border-radius: 50%; background: var(--paper); border: 2px solid var(--teal);
-  }
-  .day-line .when { color: var(--teal); font-weight: 700; font-size: 0.95rem; display: block; }
-  .day-line p { color: var(--ink-soft); margin: 0; }
-  .monthly {
-    margin-top: 36px; max-width: var(--measure);
-    padding: 20px 22px; background: var(--paper-raised); border-left: 4px solid var(--mark);
-  }
-  .monthly p { margin: 0; }
 
   .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin: 32px 0 0; max-width: 820px; }
   .facts div { padding: 18px 20px 18px 0; border-top: 2px solid var(--ink); margin-right: 24px; }
@@ -201,15 +157,10 @@
   .site-foot nav { display: flex; gap: 20px; }
 
   @media (max-width: 560px) {
-    .week li { padding: 10px 6px 12px; }
-    .week .note { font-size: 0.75rem; }
     .site-head nav { display: none; }
   }
   @media (prefers-reduced-motion: no-preference) {
     html { scroll-behavior: smooth; }
-    .week .hub { animation: mark-in 650ms cubic-bezier(.3,.7,.2,1) 200ms both; }
-    .week .hub:nth-child(4) { animation-delay: 500ms; }
-    @keyframes mark-in { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
   }
 </style>
 </head>
@@ -222,17 +173,8 @@
 
 <main>
   <div class="wrap hero">
-    <h1>Working for animals, but not alone.</h1>
-    <p class="lede">The Animal Welfare Hub brings together people in and around Cologne who work full-time on animal welfare or firmly plan to. On two fixed days a week, we work in the same room, each on our own projects.</p>
-
-    <ol class="week" aria-label="Work week, hub days marked">
-      <li><span class="day">Mon</span><span class="note"></span></li>
-      <li class="hub"><span class="day">Tue</span><span class="note">Hub</span></li>
-      <li><span class="day">Wed</span><span class="note"></span></li>
-      <li class="hub"><span class="day">Thu</span><span class="note">Hub</span></li>
-      <li><span class="day">Fri</span><span class="note"></span></li>
-    </ol>
-    <p class="week-caption">Probably Tuesdays and Thursdays. We set the days together.</p>
+    <h1>Working for animals, <span class="together">together.</span></h1>
+    <p class="lede">The Animal Welfare Hub brings together people in and around Cologne who work on food system change: making plant-based food the norm and moving away from animal products. We share a room and each work on our own projects.</p>
 
     <div class="hero-actions">
       <a class="button" href="#join">Sign up</a>
@@ -247,9 +189,9 @@
         <p>If you have an NGO job, you have colleagues and a structure. If you are building your own project, you are often alone at your desk. The hub is for the second group.</p>
       </div>
       <ul class="fit">
-        <li>You work full-time on animal welfare or firmly plan to, alone or with two or three others.</li>
-        <li>You don’t have to found anything. Researchers and people writing papers belong here just as much.</li>
-        <li>Animal welfare is the core. Food system change, climate and food, or alternative proteins fit too.</li>
+        <li>This is real work for you, not something for the odd free evening. Full-time or part-time alongside studies or a job, both count, and so does firmly planning to start.</li>
+        <li>Your work moves the food system away from animal products and towards plant-based food, whether through campaigns, research, alternative proteins, catering or policy.</li>
+        <li>You work alone or in a small team, without an office of your own.</li>
         <li>To start with, the hub is for anyone who can commute to Cologne.</li>
       </ul>
     </div>
@@ -257,26 +199,10 @@
 
   <section class="block" id="day" aria-labelledby="h-tag">
     <div class="wrap">
-      <h2 id="h-tag">What a hub day looks like</h2>
-      <ol class="day-line">
-        <li>
-          <span class="when">Morning</span>
-          <h3>Short check-in</h3>
-          <p>Everyone says what they want to get done today.</p>
-        </li>
-        <li>
-          <span class="when">Lunch</span>
-          <h3>Eating together</h3>
-          <p>Time to hear about each other’s work.</p>
-        </li>
-        <li>
-          <span class="when">End of the day</span>
-          <h3>Short review</h3>
-          <p>What worked, where you are stuck, what comes next.</p>
-        </li>
-      </ol>
-      <div class="monthly">
-        <p><strong>Once a month,</strong> someone presents their project and gets feedback from the group.</p>
+      <h2 id="h-tag">What a hub day is like</h2>
+      <div class="prose">
+        <p>We work in the same room, each on our own projects. That is the core. Around it there is time to talk over lunch, to ask the others when you are stuck and to hear what they are working on.</p>
+        <p>Everything beyond that we shape together as the group finds its rhythm.</p>
       </div>
     </div>
   </section>
@@ -289,7 +215,7 @@
       </div>
       <dl class="facts">
         <div><dt>Group</dt><dd>Five to eight people to start</dd></div>
-        <div><dt>Days</dt><dd>Two fixed days a week</dd></div>
+        <div><dt>Days</dt><dd>One or two a week to start, then we see how it grows</dd></div>
         <div><dt>Place</dt><dd>Being sorted out, ideally near the University of Cologne</dd></div>
       </dl>
       <div class="prose" style="margin-top:32px">
@@ -324,17 +250,20 @@
           <legend>How much time do you put into it?</legend>
           <div class="choices">
             <label class="choice"><input type="radio" name="umfang" value="Full-time" required><span>Full-time</span></label>
-            <label class="choice"><input type="radio" name="umfang" value="Firmly planning to"><span>Firmly planning to</span></label>
             <label class="choice"><input type="radio" name="umfang" value="Part-time"><span>Part-time</span></label>
+            <label class="choice"><input type="radio" name="umfang" value="Planning to start"><span>Planning to start</span></label>
           </div>
         </fieldset>
 
         <fieldset>
-          <legend>Which days work for you?</legend>
+          <legend>Which weekdays usually work for you?</legend>
+          <span class="hint">So we can pick days that suit most people.</span>
           <div class="choices">
-            <label class="choice"><input type="checkbox" name="tage" value="Tuesday"><span>Tuesday</span></label>
-            <label class="choice"><input type="checkbox" name="tage" value="Thursday"><span>Thursday</span></label>
-            <label class="choice"><input type="checkbox" name="tage" value="Other days"><span>Other days</span></label>
+            <label class="choice"><input type="checkbox" name="tage" value="Monday"><span>Mon</span></label>
+            <label class="choice"><input type="checkbox" name="tage" value="Tuesday"><span>Tue</span></label>
+            <label class="choice"><input type="checkbox" name="tage" value="Wednesday"><span>Wed</span></label>
+            <label class="choice"><input type="checkbox" name="tage" value="Thursday"><span>Thu</span></label>
+            <label class="choice"><input type="checkbox" name="tage" value="Friday"><span>Fri</span></label>
           </div>
         </fieldset>
 

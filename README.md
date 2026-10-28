@@ -1,6 +1,6 @@
 # Animal Welfare Hub Köln
 
-The website for the Animal Welfare Hub: coworking in Cologne for people who work full-time on animal welfare or firmly plan to.
+The website for the Animal Welfare Hub: coworking in Cologne for people who are seriously committed to food system change, full-time or part-time.
 
 Plain static HTML, no build step. `index.html` is the page, `impressum.html` and `datenschutz.html` are the legal pages.
 
