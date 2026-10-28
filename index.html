@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Animal Welfare Hub Köln</title>
 <meta name="description" content="Coworking in Cologne for people who are seriously committed to food system change: making plant-based food the norm and moving away from animal products.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Animal Welfare Hub Köln">
+<meta property="og:description" content="Coworking in Cologne for people who are seriously committed to food system change.">
+<meta property="og:image" content="https://fburgerdev.github.io/animal-welfare-hub-website/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -67,10 +73,16 @@
 
   /* Header */
   .site-head {
-    display: flex; justify-content: space-between; align-items: baseline;
+    display: flex; justify-content: space-between; align-items: center;
     padding-top: 28px; padding-bottom: 28px;
     font-weight: 700;
   }
+  .brand { display: flex; align-items: flex-start; gap: 8.5px; color: var(--ink); text-decoration: none; }
+  .brand:hover { text-decoration: none; }
+  .brand svg { width: 57px; height: 57px; margin-top: -2.35px; flex-shrink: 0; }
+  .brand svg path { fill: var(--mark); }
+  .brand-text { display: flex; flex-direction: column; font-size: 18px; line-height: 1; letter-spacing: -0.01em; font-weight: 800; }
+  .brand-text .city { font-weight: 400; }
   .site-head nav a { font-weight: 500; color: var(--ink-soft); text-decoration: none; }
   .site-head nav a:hover { color: var(--ink); text-decoration: underline; }
 
@@ -167,7 +179,13 @@
 <body>
 
 <header class="wrap site-head">
-  <span>Animal Welfare Hub Köln</span>
+  <a class="brand" href="./" aria-label="Animal Welfare Hub Köln, home">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M38.5 9 C31.5 31 17.5 52 17.5 75 C17.5 90 31.5 97 44 93 C46.5 71 45.5 33 38.5 9 Z"></path>
+      <path d="M61.5 9 C68.5 31 82.5 52 82.5 75 C82.5 90 68.5 97 56 93 C53.5 71 54.5 33 61.5 9 Z"></path>
+    </svg>
+    <span class="brand-text"><span>Animal</span><span>Welfare Hub</span><span class="city">Köln</span></span>
+  </a>
   <nav aria-label="Page navigation"><a href="#join">Join</a></nav>
 </header>
 
