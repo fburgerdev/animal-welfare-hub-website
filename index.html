@@ -168,7 +168,7 @@
 
 <header class="wrap site-head">
   <span>Animal Welfare Hub Köln</span>
-  <nav aria-label="Page navigation"><a href="#join">Sign up</a></nav>
+  <nav aria-label="Page navigation"><a href="#join">Join</a></nav>
 </header>
 
 <main>
@@ -177,7 +177,7 @@
     <p class="lede">The Animal Welfare Hub brings together people in and around Cologne who work on food system change: making plant-based food the norm and moving away from animal products. We share a room and each work on our own projects.</p>
 
     <div class="hero-actions">
-      <a class="button" href="#join">Sign up</a>
+      <a class="button" href="#join">Join</a>
       <a href="#who">Who is it for?</a>
     </div>
   </div>
@@ -186,13 +186,12 @@
     <div class="wrap">
       <h2 id="h-wen">For people who are already serious about it</h2>
       <div class="prose">
-        <p>If you have an NGO job, you have colleagues and a structure. If you are building your own project, you are often alone at your desk. The hub is for the second group.</p>
+        <p>Whether you run your own project, work for an NGO or do research: the hub is a place to work alongside people who care about the same thing.</p>
       </div>
       <ul class="fit">
-        <li>This is real work for you, not something for the odd free evening. Full-time or part-time alongside studies or a job, both count, and so does firmly planning to start.</li>
-        <li>Your work moves the food system away from animal products and towards plant-based food, whether through campaigns, research, alternative proteins, catering or policy.</li>
-        <li>You work alone or in a small team, without an office of your own.</li>
-        <li>To start with, the hub is for anyone who can commute to Cologne.</li>
+        <li>You take this work seriously, full-time or part-time.</li>
+        <li>You help make plant-based food the norm.</li>
+        <li>You can get to Cologne.</li>
       </ul>
     </div>
   </section>
@@ -201,7 +200,7 @@
     <div class="wrap">
       <h2 id="h-tag">What a hub day is like</h2>
       <div class="prose">
-        <p>We work in the same room, each on our own projects. That is the core. Around it there is time to talk over lunch, to ask the others when you are stuck and to hear what they are working on.</p>
+        <p>We work in the same room, each on our own projects. In between, we share what we have learned, brainstorm together when someone is stuck and open up our networks to each other.</p>
         <p>Everything beyond that we shape together as the group finds its rhythm.</p>
       </div>
     </div>
@@ -228,7 +227,7 @@
     <div class="wrap">
       <h2 id="h-form">Join the pilot</h2>
       <div class="prose">
-        <p>Sign up if you would like to be part of the pilot. Florian will then get in touch with you.</p>
+        <p>Want to be part of the pilot? Leave your details and Florian will get in touch with you.</p>
       </div>
 
       <form id="signup" novalidate>
@@ -275,14 +274,14 @@
         </div>
 
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <input type="hidden" name="_subject" value="New sign-up: Animal Welfare Hub Köln">
+        <input type="hidden" name="_subject" value="New pilot request: Animal Welfare Hub Köln">
 
-        <button class="button" type="submit">Sign up</button>
+        <button class="button" type="submit">Join</button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
 
       <div class="form-done" id="form-done" hidden tabindex="-1">
-        <h3>You are signed up.</h3>
+        <h3>Thanks, you are in.</h3>
         <p>Florian will get in touch once the pilot is set.</p>
       </div>
     </div>
@@ -297,7 +296,7 @@
 </footer>
 
 <script>
-  // Formspree form that receives sign-ups and forwards them by email.
+  // Formspree form that receives join requests and forwards them by email.
   const FORM_ENDPOINT = "https://formspree.io/f/xwllbpbg";
 
   const form = document.getElementById("signup");
@@ -336,7 +335,7 @@
 
     const button = form.querySelector('button[type="submit"]');
     button.disabled = true;
-    button.textContent = "Signing up";
+    button.textContent = "Sending";
 
     try {
       const response = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { "Accept": "application/json" } });
@@ -346,18 +345,18 @@
           ? body.errors.map(e => e.message).join(" ")
           : "";
         button.disabled = false;
-        button.textContent = "Sign up";
+        button.textContent = "Join";
         return fail(detail
-          ? "Signing up did not work: " + detail
-          : "Signing up did not work. Please try again.");
+          ? "Sending did not work: " + detail
+          : "Sending did not work. Please try again.");
       }
       form.hidden = true;
       done.hidden = false;
       done.focus();
     } catch (error) {
       button.disabled = false;
-      button.textContent = "Sign up";
-      fail("Signing up did not work. Check your connection and try again.");
+      button.textContent = "Join";
+      fail("Sending did not work. Check your connection and try again.");
     }
   });
 </script>
