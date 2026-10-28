@@ -346,6 +346,7 @@
         </div>
 
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_subject" value="Neue Anmeldung: Animal Welfare Hub Köln">
 
         <button class="button" type="submit">Eintragen</button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
@@ -367,9 +368,8 @@
 </footer>
 
 <script>
-  // Address of the form service that receives sign-ups (for example a Formspree form URL).
-  // Leave empty until the form service is set up.
-  const FORM_ENDPOINT = "";
+  // Formspree form that receives sign-ups and forwards them by email.
+  const FORM_ENDPOINT = "https://formspree.io/f/xwllbpbg";
 
   const form = document.getElementById("signup");
   const statusEl = document.getElementById("form-status");
@@ -411,7 +411,17 @@
 
     try {
       const response = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { "Accept": "application/json" } });
-      if (!response.ok) throw new Error(String(response.status));
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        const detail = Array.isArray(body.errors) && body.errors.length
+          ? body.errors.map(e => e.message).join(" ")
+          : "";
+        button.disabled = false;
+        button.textContent = "Eintragen";
+        return fail(detail
+          ? "Das Eintragen hat nicht geklappt: " + detail
+          : "Das Eintragen hat nicht geklappt. Versuch es bitte noch einmal.");
+      }
       form.hidden = true;
       done.hidden = false;
       done.focus();
